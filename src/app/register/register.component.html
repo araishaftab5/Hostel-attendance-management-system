@@ -1,0 +1,46 @@
+
+<body>
+  <h1>Welcome to Kamla Nehru Girls Hostel</h1>
+  <h2>Register below</h2>
+  <div class="form-block-3 w-form">
+<form (ngSubmit)="f.form.valid && submit(f)" #f="ngForm">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="email" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Enter Name" 
+                name="name" [(ngModel)]="register.name"  required #name="ngModel" pattern="[a-z]">
+                               <span *ngIf="f.submitted && name.errors?.required">Please enter your name</span> 
+                <!-- <span *ngIf="f.submitted && name.errors?.pattern">Invalid name</span>  -->
+              </div>  
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email"
+       name="email" [(ngModel)]="register.email" required #email="ngModel">
+      <span *ngIf="f.submitted && email.errors?.required">Please enter your email address</span> 
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password"
+       name="password" [(ngModel)]="register.password" required #password="ngModel">
+      <span *ngIf="f.submitted && password.errors?.required">Please enter your password</span> 
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Confirm Password</label>
+      <input type="password" class="form-control" id="exampleInputConfirmPassword" placeholder="Confirm Password"
+       pattern="{{register.password}}" #cpass="ngModel" name="confirmpassword" [(ngModel)]="confirmpassword" required #cpassword="ngModel">
+      <span *ngIf="f.submitted && cpassword.errors?.required">Please enter your password once again</span> 
+      <span class="text-danger" *ngIf="f.submitted && cpass.errors?.pattern">Password and Confirm password does not match</span>
+    </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+<span [ngClass]="(status==1)?'text-success':'text-danger'">{{message}}</span>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>  
+</form>
+  </div>
+</body>
+
